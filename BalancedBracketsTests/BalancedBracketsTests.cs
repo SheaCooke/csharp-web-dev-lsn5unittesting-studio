@@ -61,5 +61,29 @@ namespace BalancedBracketsTests
         {
             Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("][][][][]"));
         }
+
+        [TestMethod]
+        public void BalancedWithNonBracketCharsPasses()
+        {
+            Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("test[test123]"));
+        }
+
+        [TestMethod]
+        public void NonBalancedWithNonBracketCharFails()
+        {
+            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("test[test123"));
+        }
+
+        [TestMethod]
+        public void DifferentBracketsFail()
+        {
+            Assert.IsFalse(BalancedBrackets.HasBalancedBrackets("[}"));
+        }
+
+        [TestMethod]
+        public void BalancedBracketsWithOtherPunctuationPasses()
+        {
+            Assert.IsTrue(BalancedBrackets.HasBalancedBrackets("[,.;         '{}}} ]"));
+        }
     }
 }
